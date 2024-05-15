@@ -6,14 +6,17 @@ return {
 	leader = " ",
 
 	-- Use the shortcut to switch/jump window.
-	jump_left_window = "<C-h>",
-	jump_right_window = "<C-l>",
-	jump_up_window = "<C-k>",
-	jump_down_window = "<C-j>",
+	jump_left_window = "<leader>hh",
+	jump_right_window = "<leader>ll",
+	jump_up_window = "<leader>kk",
+	jump_down_window = "<leader>jj",
 
 	-- View other usage of the plugin: https://github.com/akinsho/bufferline.nvim
 	-- Use the shortcut to pick a buffer tab.
-	pick_tab = "<leader>b",
+	pick_tab = "<leader>pt",
+	left_tab = "<C-h>",
+	right_tab = "<C-l>",
+	pick_tab_close = "<leader>ct",	
 
 	-- View other usage of the plugin: https://github.com/nvim-neo-tree/neo-tree.nvim
 	-- Use the shortcut to open or close file explorer.
@@ -28,7 +31,7 @@ return {
 	-- View other usage of the plugin: https://github.com/akinsho/toggleterm.nvim
 	-- Use the shortcut to open or close the terminal.
 	terminal_float = "<A-u>", -- open terminal in a float window
-	terminal_bottom = "<A-b>", -- open terminal at the bottom
+	terminal_bottom = "<leader>bb", -- open terminal at the bottom
 
 	-- View other usage of the plugin: https://github.com/Shatur/neovim-session-manager
 	-- Use the shortcut to switch a session.

@@ -34,6 +34,9 @@ local function set_keymap()
 
 	-- Supported by bufferline
 	map("n", keys.pick_tab, ":BufferLinePick<CR>", option)
+	map("n", keys.left_tab, ":BufferLineCyclePrev<CR>", option)
+	map("n", keys.right_tab, ":BufferLineCycleNext<CR>", option)
+	map("n", keys.pick_tab_close, ":BufferLinePickClose<CR>", option)
 
 	-- Supported by nvim-tree
 	map("n", keys.file_explorer, ":Neotree position=left source=filesystem action=show toggle=true<CR>", option)
@@ -111,6 +114,13 @@ local function set_keymap()
 				[[<Cmd>wincmd l<CR>]],
 				{ noremap = true, silent = true }
 			)
+			-- vim.api.nvim_buf_set_keymap(
+			-- 	term.bufnr,
+			-- 	"t",
+			-- 	"<ESC>",
+			-- 	[[<C-\><C-n>]],
+			-- 	{ noremap = true, silent = true }
+			-- )
 			vim.cmd("startinsert!")
 		end,
 		on_exit = function(t, job, exit_code, name)
@@ -121,10 +131,15 @@ local function set_keymap()
 		bottom_terminal_default:toggle()
 	end
 
+	-- t 代表终端模式，n 代表普通模式
 	map("n", keys.terminal_float, ":lua _float_term_toggle()<CR>", option)
 	map("t", keys.terminal_float, "<C-\\><C-n>:lua _float_term_toggle()<CR>", option)
 	map("n", keys.terminal_bottom, ":lua _bottom_term_toggle()<CR>", option)
 	map("t", keys.terminal_bottom, "<C-\\><C-n>:lua _bottom_term_toggle()<CR>", option)
+	-- 在终端模式下，按下 ESC 即可退出 TERMINAL 模式（这样就可以正常使用 : 命令等功能了，否则一些输入都会被算作终端输入操作）
+	map("t", "<ESC>", "<C-\\><C-n>", option)
+	map("t", "<leader>t2", ":2ToggleTerm<CR>", option)
+	map("n", "<leader>t2", ":2ToggleTerm<CR>", option)
 
 	vim.cmd([[
     command! Termfloat :lua _float_term_toggle()
