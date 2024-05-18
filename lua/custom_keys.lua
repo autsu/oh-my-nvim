@@ -40,6 +40,7 @@ return {
 	-- View other usage of the plugin: https://github.com/nvim-telescope/telescope.nvim
 	-- Use the shortcut to find, search files and find buffers.
 	find_files = "<leader>ff",
+	-- 需要安装 brew install ripgrep
 	live_grep = "<leader>fg",
 	search_cursor = "<leader>fc",
 	find_buffer = "<leader>fb",

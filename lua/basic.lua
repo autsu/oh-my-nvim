@@ -10,6 +10,14 @@ vim.opt.backspace = "indent,eol,start" -- backspace works on every char in inser
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.history = 1000
 vim.opt.startofline = true
+-- 复制到系统剪切板
+vim.opt.clipboard = "unnamedplus"
+-- ufo
+vim.opt.foldcolumn = "1" -- '0' is not bad
+vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 -- Mapping waiting time
 vim.opt.timeout = false

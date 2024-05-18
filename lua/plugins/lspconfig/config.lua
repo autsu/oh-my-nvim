@@ -28,6 +28,7 @@ return function()
 				vim.lsp.buf.format({ async = true })
 			end, opts)
 
+			-- 查看 go 变量类型
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 			vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)

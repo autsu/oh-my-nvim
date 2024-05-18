@@ -11,6 +11,17 @@ local function set_keymap()
 	map("n", keys.jump_up_window, "<C-W>k", option)
 	map("n", keys.jump_right_window, "<C-W>l", option)
 
+	-- go.nvim
+	map("n", "ggr", ":GoGenReturn<CR>", option)
+	map("n", "gfs", ":GoFillStruct<CR>", option)
+	map("n", "gis", ":GoImports<CR>", option)
+
+	-- nvim-ufo
+	-- 折叠/展开所有函数（不好用）
+	map("n", "zr", require("ufo").openAllFolds)
+	map("n", "zm", require("ufo").closeAllFolds)
+	-- za: 折叠/展开单个块（用这个）
+
 	vim.cmd([[
     " press esc to cancel search highlight
     nnoremap <silent> <Esc> :nohlsearch<CR>:echo<CR>
