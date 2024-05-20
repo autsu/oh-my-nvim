@@ -24,7 +24,17 @@ return {
 				-- and will be called for each installed server that doesn't have
 				-- a dedicated handler.
 				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({})
+					local handlers =  {
+						["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+						["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+						-- 禁止同行显示错误信息，如果错误信息太长的话会显示不完整
+						["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+							virtual_text = false,
+							underline = true,
+							signs = true,
+						}),
+					}
+					require("lspconfig")[server_name].setup({ handlers = handlers })
 				end,
 				-- Next, you can provide a dedicated handler for specific servers.
 				-- For example, a handler override for the `rust_analyzer`:

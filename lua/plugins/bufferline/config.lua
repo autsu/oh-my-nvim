@@ -13,7 +13,7 @@ return function()
 				style = "icon",
 			},
 			diagnostics = "nvim_lsp",
-			diagnostics_update_in_insert = false,
+			diagnostics_update_in_insert = true,
 			offsets = {
 				{
 					filetype = "neo-tree",

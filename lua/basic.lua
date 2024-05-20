@@ -91,3 +91,13 @@ vim.cmd([[
     syntax      enable
     syntax      on
 ]])
+
+-- 鼠标悬浮时显示错误行错误信息
+-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#show-line-diagnostics-automatically-in-hover-window
+vim.o.updatetime = 250
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+  callback = function ()
+    vim.diagnostic.open_float(nil, {focus=false})    
+  end
+})
